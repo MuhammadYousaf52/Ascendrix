@@ -1,0 +1,643 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap');
+
+.book-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 80px 0 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Aged Ash Wood table surface (Desktop version - completely separated from mobile rules) */
+@media (min-width: 1024px) {
+  .book-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) perspective(1200px) rotateX(12deg);
+    width: 80%;
+    max-width: 2400px;
+    height: 42%;
+    min-height: 380px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        #2e2a24 0px,
+        #3a352e 3px,
+        #2e2a24 6px,
+        #3a352e 9px,
+        #2e2a24 12px,
+        #3a352e 15px
+      ),
+      linear-gradient(180deg, #3a352e 0%, #2e2a24 50%, #1f1c18 100%);
+    background-size: 100% 100%, 100% 100%;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.85),
+      inset 0 -40px 80px rgba(0,0,0,0.5),
+      inset 0 2px 4px rgba(212,184,150,0.1);
+    border-radius: 16px;
+    z-index: -2;
+  }
+
+  .book-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) perspective(1200px) rotateX(12deg);
+    width: 150%;
+    max-width: 2400px;
+    height: 42%;
+    min-height: 380px;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 12px,
+        rgba(0,0,0,0.1) 12px,
+        rgba(0,0,0,0.1) 13px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(46,42,36,0.2) 0px,
+        transparent 6px,
+        rgba(46,42,36,0.3) 12px,
+        transparent 18px,
+        rgba(46,42,36,0.2) 24px
+      );
+    opacity: 0.6;
+    pointer-events: none;
+    border-radius: 16px;
+    z-index: -1;
+  }
+}
+
+.book-flipbook-container {
+  width: 680px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.85)) drop-shadow(0 12px 24px rgba(0,0,0,0.6));
+  z-index: 1;
+  --content-scale: 1;
+}
+
+.book-flipbook {
+  transform-style: flat !important;
+  filter: none;
+}
+
+.book-flipbook canvas {
+  display: none !important;
+}
+
+.book-flipbook > * {
+  transform-style: flat !important;
+  backface-visibility: hidden !important;
+}
+
+.book-flipbook .stf__item {
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+.book-flipbook .stf__item--left,
+.book-flipbook .stf__item--right {
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+.book-flipbook .stf__block {
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  transform-style: flat !important;
+}
+
+.book-hint {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: #d4b896;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  z-index: 1;
+  position: relative;
+}
+
+/* ─── BASE PAGE ─── */
+.book-page {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ─── EXTRAORDINARY COVER RE-ENGINEERING (BEIGE THEME) ─── */
+.book-cover {
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.15) 100%),
+    radial-gradient(circle at 50% 30%, #f4eee1 0%, #e5d4ba 50%, #c2aa8f 100%);
+  border-right: 5px solid #b38f36;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset -10px 0 20px rgba(0,0,0,0.3),
+    inset 4px 4px 10px rgba(255,255,255,0.6);
+}
+
+.book-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.06) 0px, transparent 2px, rgba(255,255,255,0.3) 4px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,0.08) 0px, transparent 1px, rgba(0,0,0,0.06) 3px),
+    radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 6px 6px, 5px 5px;
+  background-position: 0 0, 0 0, 0 0, 1px 1px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.book-cover::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2.5px solid transparent;
+  border-image: linear-gradient(145deg, #fff5b8 0%, #cfa63c 25%, #946e13 50%, #cfa63c 75%, #fff5b8 100%) 3;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(0,0,0,0.1),
+    inset 0 0 15px rgba(184, 143, 46, 0.15),
+    0 4px 8px rgba(0,0,0,0.15);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.book-cover-inner-border {
+  position: absolute;
+  inset: 22px;
+  border: 1px dashed rgba(148, 110, 19, 0.45);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.book-cover-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  gap: calc(14px * var(--content-scale, 1));
+  position: relative;
+  z-index: 2;
+}
+
+.book-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff5b8 0%, #cfa63c 45%, #7a590b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.4)) drop-shadow(0px 0px 1px rgba(255,255,255,0.6));
+}
+.book-corner-tl { top: 18px; left: 18px; }
+.book-corner-tr { top: 18px; right: 18px; transform: scaleX(-1); }
+.book-corner-bl { bottom: 18px; left: 18px; transform: scaleY(-1); }
+.book-corner-br { bottom: 18px; right: 18px; transform: scale(-1); }
+
+.book-cover-top-line {
+  width: 75%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff5b8, #cfa63c, transparent);
+  margin-bottom: 6px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.book-cover-bottom-line {
+  width: 75%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff5b8, #cfa63c, transparent);
+  margin-top: 6px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.book-cover-logo {
+  width: calc(56px * var(--content-scale, 1));
+  height: calc(56px * var(--content-scale, 1));
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)) drop-shadow(0 0 8px rgba(207,166,60,0.3));
+}
+
+.book-cover-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: calc(1.75rem * var(--content-scale, 1));
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.2;
+  margin: 4px 0;
+  width: 100%;
+  letter-spacing: 0.08em;
+  background: linear-gradient(
+    180deg, 
+    #5c4314 0%, 
+    #8c6719 25%, 
+    #be9634 50%, 
+    #7a590b 75%, 
+    #422f09 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: 
+    drop-shadow(0 1px 0px rgba(255,255,255,0.8))
+    drop-shadow(0px -1px 0px rgba(0,0,0,0.4))
+    drop-shadow(0px 2px 3px rgba(92,67,20,0.3));
+}
+
+.book-cover-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 85%;
+}
+
+.book-cover-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(140, 103, 25, 0.5));
+}
+
+.book-cover-divider-line:last-child {
+  background: linear-gradient(90deg, rgba(140, 103, 25, 0.5), transparent);
+}
+
+.book-cover-divider-diamond {
+  color: #8c6719;
+  font-size: 9px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+.book-cover-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-size: calc(0.78rem * var(--content-scale, 1));
+  color: #4a3b2c;
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+}
+
+.book-cover-seal {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #cfa63c, #946e13) 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #802222 0%, #4a0f0f 100%);
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.25), 
+    inset 0 0 8px rgba(255,245,184,0.2),
+    0 0 0 1px rgba(0,0,0,0.15);
+}
+
+.book-cover-seal-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.48rem;
+  font-weight: 600;
+  color: #fff5b8;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.book-cover-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: rgba(74, 59, 44, 0.65);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  bottom: 26px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+}
+
+/* ─── BACK COVER (BEIGE THEME) ─── */
+.book-back-cover {
+  background: 
+    linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.12) 100%),
+    radial-gradient(circle at 50% 50%, #f4eee1 0%, #e5d4ba 70%, #ba9f82 100%);
+  border-left: 5px solid #b38f36;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 10px 0 20px rgba(0,0,0,0.3),
+    inset -4px 4px 10px rgba(255,255,255,0.6);
+}
+
+.book-back-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.06) 0px, transparent 2px, rgba(255,255,255,0.3) 4px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,0.08) 0px, transparent 1px, rgba(0,0,0,0.06) 3px),
+    radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 6px 6px, 5px 5px;
+  background-position: 0 0, 0 0, 0 0, 1px 1px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.book-back-cover::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2.5px solid transparent;
+  border-image: linear-gradient(145deg, #fff5b8 0%, #cfa63c 25%, #946e13 50%, #cfa63c 75%, #fff5b8 100%) 3;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+.book-back-quote {
+  font-family: 'IM Fell English', serif;
+  font-size: calc(0.95rem * var(--content-scale, 1));
+  color: #4a3b2c;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.9;
+  margin: 0;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+}
+
+/* ─── PARCHMENT PAGES ─── */
+.book-chapter-page {
+  background: #ffffff;
+  border-right: 1px solid rgba(139,100,50,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-chapter-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(139,100,50,0.04) 28px,
+      rgba(139,100,50,0.04) 29px
+    );
+  pointer-events: none;
+}
+
+.book-chapter-page::after {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(180,100,100,0.15);
+  pointer-events: none;
+}
+
+.book-chapter-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px 16px;
+  gap: calc(16px * var(--content-scale, 1));
+  position: relative;
+  z-index: 1;
+}
+
+.book-chapter-flourish {
+  font-size: calc(1.4rem * var(--content-scale, 1));
+  color: #8b6914;
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.book-chapter-number {
+  font-family: 'Cinzel', serif;
+  font-size: calc(0.65rem * var(--content-scale, 1));
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #8b6914;
+}
+
+.book-chapter-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8b6914, transparent);
+}
+
+.book-chapter-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: calc(0.95rem * var(--content-scale, 1));
+  font-weight: 700;
+  color: #2c1a0a;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.book-chapter-subtitle-line {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.book-chapter-subtitle-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(139,100,50,0.3);
+}
+
+.book-chapter-subtitle-star {
+  color: #8b6914;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ─── CONTENT PAGE ─── */
+.book-content-page {
+  background: #ffffff;
+  border-left: 1px solid rgba(139,100,50,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-content-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(139,100,50,0.04) 28px,
+      rgba(139,100,50,0.04) 29px
+    );
+  pointer-events: none;
+}
+
+.book-content-page::after {
+  content: '';
+  position: absolute;
+  right: 32px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(180,100,100,0.12);
+  pointer-events: none;
+}
+
+.book-content-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 32px 24px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.book-content-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.book-content-header-ornament {
+  font-size: calc(12px * var(--content-scale, 1));
+  color: #8b6914;
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+}
+
+.book-content-text {
+  font-family: 'IM Fell English', serif;
+  font-size: calc(1.05rem * var(--content-scale, 1));
+  color: #1a0f00;
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0;
+  hyphens: auto;
+  flex: 1;
+}
+
+/* Illuminated drop cap */
+.book-content-text::first-letter {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: calc(2.2rem * var(--content-scale, 1));
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin: 4px 6px -2px 0;
+  color: #8b1a1a;
+  text-shadow:
+    1px 1px 0 #c9a84c,
+    2px 2px 0 rgba(139,26,26,0.3),
+    0 0 20px rgba(201,168,76,0.4);
+  background: linear-gradient(135deg, #8b1a1a 0%, #c9a84c 50%, #8b1a1a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.book-content-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(139,100,50,0.2);
+}
+
+.book-page-number {
+  font-family: 'Cinzel', serif;
+  font-size: calc(0.65rem * var(--content-scale, 1));
+  color: #4a2c1a;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.book-page-footer-ornament {
+  font-size: calc(10px * var(--content-scale, 1));
+  color: #5d4037;
+  letter-spacing: 0.1em;
+}
+
+/* ─── MOBILE MODIFICATIONS (Laptop remains fully pristine above 1024px) ─── */
+@media (max-width: 1023px) {
+  .book-wrapper::before,
+  .book-wrapper::after {
+    display: none !important;
+  }
+  .book-flipbook-container {
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35)) !important;
+  }
+  .book-content-inner {
+    padding: 16px 14px 10px !important;
+  }
+  .book-cover-inner {
+    padding: 16px 14px !important;
+  }
+  .book-cover-inner-border {
+    inset: 10px !important;
+  }
+  .book-cover::after {
+    inset: 6px !important;
+  }
+  .book-corner {
+    font-size: 16px !important;
+  }
+  .book-corner-tl { top: 8px; left: 8px; }
+  .book-corner-tr { top: 8px; right: 8px; }
+  .book-corner-bl { bottom: 8px; left: 8px; }
+  .book-corner-br { bottom: 8px; right: 8px; }
+}
