@@ -63,10 +63,9 @@ export default function Services() {
       // Badge fade up
       gsap.from(badgeRef.current, {
         opacity: 0, y: 24, duration: 0.7, ease: "power3.out",
-        scrollTrigger: { trigger: badgeRef.current, start: "top 88%" }
+        scrollTrigger: { trigger: badgeRef.current, start: "top 95%" }
       })
 
-      // Split heading words and animate each
       const words1 = line1Ref.current?.querySelectorAll("span")
       const words2 = line2Ref.current?.querySelectorAll("span")
 
@@ -74,14 +73,14 @@ export default function Services() {
         gsap.from(words1, {
           opacity: 0, y: 40, rotateX: -20,
           duration: 0.7, stagger: 0.08, ease: "power3.out",
-          scrollTrigger: { trigger: line1Ref.current, start: "top 88%" }
+          scrollTrigger: { trigger: line1Ref.current, start: "top 95%" }
         })
       }
       if (words2?.length) {
         gsap.from(words2, {
           opacity: 0, y: 40, rotateX: -20,
           duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.15,
-          scrollTrigger: { trigger: line2Ref.current, start: "top 88%" }
+          scrollTrigger: { trigger: line2Ref.current, start: "top 95%" }
         })
       }
     })

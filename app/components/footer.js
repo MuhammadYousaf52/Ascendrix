@@ -262,8 +262,7 @@ export default function BalancedPremiumFooter() {
   const footerRef = useRef(null)
   const innerRef = useRef(null)
   const [modal, setModal] = useState(null)
-  const devEmail = "my442933@gmail.com"
-  const devPhone = "+92-3167271308"
+  const devEmail = "yusuf.dev.pk@gmail.com"
   const companyPhone = "+1 3479927860"
 
   useEffect(() => {
@@ -271,11 +270,11 @@ export default function BalancedPremiumFooter() {
       gsap.fromTo(
         innerRef.current,
         { clipPath: "inset(100% 0% 0% 0%)", opacity: 0 },
-        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: footerRef.current, start: "top 92%" } }
+        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: footerRef.current, start: "top 98%" } }
       )
       gsap.from(innerRef.current?.querySelectorAll(".footer-item"), {
         opacity: 0, y: 24, duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.3,
-        scrollTrigger: { trigger: footerRef.current, start: "top 92%" }
+        scrollTrigger: { trigger: footerRef.current, start: "top 98%" }
       })
     })
     return () => ctx.revert()
@@ -283,7 +282,7 @@ export default function BalancedPremiumFooter() {
 
   return (
     <>
-      <footer ref={footerRef} className="w-full bg-gradient-to-b from-slate-200 to-slate-100 text-slate-500 font-sans border-t border-slate-200 overflow-hidden">
+      <footer ref={footerRef} className="w-full bg-linear-to-b from-slate-200 to-slate-100 text-slate-500 font-sans border-t border-slate-200 overflow-hidden">
         <div ref={innerRef} className="max-w-6xl mx-auto px-6 pt-12 pb-10">
 
           {/* BIG OUTER COMPANY BOX */}
@@ -372,9 +371,6 @@ export default function BalancedPremiumFooter() {
                     <div className="flex flex-col sm:flex-row gap-3 pt-1 text-xs text-slate-400">
                       <a href={`mailto:${devEmail}`} className="flex items-center gap-1.5 hover:text-slate-900 transition-colors">
                         <Mail className="w-3.5 h-3.5" />{devEmail}
-                      </a>
-                      <a href={`tel:${devPhone.replace(/\s+/g, '')}`} className="flex items-center gap-1.5 hover:text-slate-900 transition-colors">
-                        <Phone className="w-3.5 h-3.5" />{devPhone}
                       </a>
                     </div>
                   </div>

@@ -57,7 +57,7 @@ export function BottomNavBar({ className, defaultIndex = 0, onBookCall }) {
         className,
       )}
     >
-      <Image src="/Official_Logo.png" alt="Logo" width={110} height={50} className="object-contain self-center shrink-0 w-[90px] md:w-[110px]" />
+      <Image src="/Official_Logo.png" alt="Logo" width={110} height={50} priority className="object-contain self-center shrink-0 w-[90px] md:w-[110px]" />
       <div className="w-px h-6 bg-white/25 mx-3 shrink-0" />
 
       <div className="flex items-center overflow-x-auto md:overflow-visible space-x-1 scrollbar-none">

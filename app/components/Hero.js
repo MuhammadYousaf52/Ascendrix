@@ -16,19 +16,11 @@ export default function Hero() {
   };
 
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 100,
-      rotateX: -90,
-    },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
@@ -113,7 +105,7 @@ export default function Hero() {
         >
           <motion.button
             className="cursor-pointer capitalize text-sm md:text-base lg:text-lg font-bold bg-linear-to-r from-cyan-400 to-cyan-600 text-white py-3 md:py-5 px-6 md:px-14 rounded-full hover:from-cyan-300 hover:to-cyan-500 transition-all duration-300 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-400/50"
-            whileHover={{ scale: 1.15, rotate: 2 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -125,7 +117,7 @@ export default function Hero() {
 
           <motion.button
             className="cursor-pointer text-sm md:text-base lg:text-lg font-bold border-2 border-black text-black py-3 md:py-5 px-6 md:px-10 rounded-full hover:bg-white transition-all duration-300 "
-            whileHover={{ scale: 1.15, rotate: -2 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}

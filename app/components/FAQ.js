@@ -39,8 +39,8 @@ export default function ChatFAQ() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(badgeRef.current, { opacity: 0, y: 20, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: badgeRef.current, start: "top 88%" } })
-      gsap.from(headingRef.current, { opacity: 0, y: 40, duration: 0.9, ease: "power3.out", delay: 0.1, scrollTrigger: { trigger: headingRef.current, start: "top 88%" } })
+      gsap.from(badgeRef.current, { opacity: 0, y: 20, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: badgeRef.current, start: "top 95%" } })
+      gsap.from(headingRef.current, { opacity: 0, y: 40, duration: 0.9, ease: "power3.out", delay: 0.1, scrollTrigger: { trigger: headingRef.current, start: "top 95%" } })
     })
     return () => ctx.revert()
   }, [])

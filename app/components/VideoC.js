@@ -141,6 +141,7 @@ const VideoPlayer = ({ src }) => {
         className="w-full"
         onTimeUpdate={handleTimeUpdate}
         src={src}
+        preload="metadata"
         onClick={handleVideoClick}
       />
 
