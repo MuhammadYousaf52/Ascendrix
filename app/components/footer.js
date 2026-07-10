@@ -323,9 +323,9 @@ export default function BalancedPremiumFooter() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 border-b border-slate-100">
               <div className="space-y-2">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-3">Email</span>
-                <a href="mailto:solutions@ascendrixco.site" className="text-sm text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-2 group w-fit">
+                <a href="mailto:adan@ascendrixppc.com" className="text-sm text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-2 group w-fit">
                   <Mail className="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors shrink-0" />
-                  solutions@ascendrixco.site
+                  adan@ascendrixppc.com
                 </a>
               </div>
               <div className="space-y-2">
